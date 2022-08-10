@@ -1,0 +1,187 @@
+﻿@model Tuple<IEnumerable<Rtestimonial>, IEnumerable<Rmainpage>, IEnumerable<Ruseraccount>, IEnumerable<Rcontactu>>
+@{
+    Layout = "_DashboardLayout";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Home </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Dashboard</a></li>
+    </ul>
+</div>
+<hr />
+
+
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+         
+            <!--[ daily sales section ] end-->
+            <!--[ Monthly  sales section ] starts-->
+            <div class="col-md-12 col-xl-6">
+                <div class="card Monthly-sales">
+                    <div class="card-block">
+                        <h6 class="mb-4">Number of Products</h6>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-9">
+                                <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i class="feather icon-arrow-up text-c-red f-30 m-r-10"></i>@ViewBag.numberofproducts</h3>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p class="m-b-0"> @ViewBag.numberofproducts%</p>
+                            </div>
+                        </div>
+                        <div class="progress m-t-30" style="height: 7px;">
+                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width: @ViewBag.numberofproducts%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--[ Monthly  sales section ] end-->
+            <!--[ year  sales section ] starts-->
+            <div class="col-md-12 col-xl-6">
+                <div class="card yearly-sales">
+                    <div class="card-block">
+                        <h6 class="mb-4">Customers Count</h6>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-9">
+                                <h3 class="f-w-300 d-flex align-items-center  m-b-0">
+                                    <i class="feather icon-arrow-up text-c-green f-30 m-r-10"></i>@ViewBag.numberofcustomer
+                                </h3>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p class="m-b-0">@ViewBag.numberofcustomer%</p>
+                            </div>
+                        </div>
+                        <div class="progress m-t-30" style="height: 7px;">
+                            <div class="progress-bar progress-c-theme" role="progressbar" style="width:@ViewBag.numberofcustomer%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--[ year  sales section ] end-->
+            <!--[ Recent Users ] start-->
+
+                        <div class="col-xl-8 col-md-6">
+                <div class="card Recent-Users">
+                    <div class="card-header">
+                        <h5>Recent Reviews</h5>
+                    </div>
+                    <div class="card-block px-0 py-3">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    @foreach (var item in Model.Item1)
+                                    {
+                                        <tr class="unread">
+                                            <td>
+                                                <img src=@Url.Content("~/Image/" + item.Testimage) class="rounded-circle" style="width:40px" />
+                                            </td>
+                                            <td>
+                                                <h6 class="mb-1">
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </h6>
+                                                <p class="m-0">
+                                                    @Html.DisplayFor(modelItem => item.Message)
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Rtestimonials/Index" class="btn btn-primary" style="font-size:15px; padding:5px; margin-left:230px"><i class="fa fa-inbox"></i>Show All To Accept or Reject Review</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6">
+                <div class="card card-event">
+                    <div class="card-block">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col">
+                                <h5 class="m-0">Total Sales</h5>
+                            </div>
+                            <div class="col-auto">
+                                <label class="label theme-bg2 text-white f-14 f-w-400 float-right">@ViewBag.Sales</label>
+                            </div>
+                        </div>
+                        <h2 class="mt-3 f-w-300">@ViewBag.numberofOrders<sub class="text-muted f-14"> Order!</sub></h2>
+                        <h6 class="text-muted mt-4 mb-0"> </h6>
+                        <i class="fab fa-angellist text-c-purple f-50"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-block border-bottom">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-auto">
+                                <i class="feather icon-zap f-30 label theme-bg2 text-white f-14 f-w-400 float-right text-c-blue"></i>
+                            </div>
+                            <div class="col">
+                                <h3 class="f-w-300">@ViewBag.numberofcategories</h3>
+                                <span class="d-block text-uppercase">Ctegory</span>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var item in Model.Item2)
+                    {
+                        <div class="card-block">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-auto">
+                                    <i class="feather icon-home f-30 label theme-bg2 text-white f-14 f-w-400 float-right text-c-blue"></i>
+                                </div>
+                                <div class="col">
+                                    <h3 class="f-w-300">Home Logo</h3>
+                                    <span class="d-block text-uppercase">
+                                        <img src=@Url.Content("~/Image/" + item.Companylogo) style="width:200px; height:150px; object-fit:contain" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+            <div class="col-xl-8 col-md-6">
+                <div class="card Recent-Users">
+                    <div class="card-header">
+                        <h5>Recent Messages</h5>
+                    </div>
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach (var item in Model.Item4)
+                            {
+                                <tr class="unread">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        <h6 class="mb-1">
+                                            @Html.DisplayFor(modelItem => item.Message)
+                                        </h6>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Rcontactus/Index" class="btn btn-primary" style="font-size:15px; padding:5px;"><i class="fa fa-inbox"></i>Show All</a>
+
+                </div>
+
+            </div>
+
+
+         
+
+        </div>
+    </div>
+</div>

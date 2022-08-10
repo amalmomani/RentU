@@ -1,0 +1,95 @@
+﻿@model IEnumerable<RentU.Models.JoinUserOrder>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> My Bag </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Orders </a></li>
+    </ul>
+</div>
+<hr />
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th> Picture </th>
+                        <th> Product Name</th>
+                        <th> Total Amount</th>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Phone number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (ViewBag.Userid == item.useraccount.Userid)
+                        {
+                            if (item.orderproduct.Status == "0")
+                            {
+                    <tr>
+                        <td>
+                            <img src=@Url.Content("~/Image/" + item.product.Image) style="width:200px; height:250px; object-fit:contain" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.Productname)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orderproduct.Totalamount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.User.Fullname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product.User.Phonenumber)
+                        </td>
+                      
+                        <td>
+                            <form asp-action="Delete">
+                                <a href="/UserDashboard/Delete/@item.orderproduct.Id" class="btn btn-danger" style="font-size:15px; padding:5px">Remove</a>
+
+                            </form>
+                        </td>
+                    </tr>                                
+                            }
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td> Total </td>
+                        <td>@ViewBag.total</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> total number of peices </td>
+                        <td>@ViewBag.amount</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+@*<div>
+    <a href="/UserDashboard/Payment" type="submit" value="AddToCart" class="btn btn-primary">Checkout</a>
+</div>*@

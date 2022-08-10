@@ -1,0 +1,131 @@
+﻿@model RentU.Models.Rproduct
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Product details</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Product </a></li>
+    </ul>
+</div>
+<hr />
+<section class="ftco-section" id="blog-section">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive table-bordered">
+                <table class="table example">
+                    <thead>
+                        <tr>
+                            <th> Picture </th>
+                            <th> Proof </th>
+                            <th> Price</th>
+                            <th> Status</th>
+                            <th>Cost to post</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        <tr>
+                            <td>
+                                <img src=@Url.Content("~/Image/" + Model.Image) style="width:200px; height:250px; object-fit:contain" />
+                            </td>
+                            <td>
+                                <img src=@Url.Content("~/Image/" + Model.Proof) style="width:200px; height:250px; object-fit:contain" />
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Price)
+                            </td>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Costtopost)
+                            </td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@Model.Productid" class="btn btn-warning" style="font-size:15px; padding:5px">Accept</a> |
+                                <a asp-action="Index" asp-route-id="@Model.Productid" class="btn btn-danger" style="font-size:15px; padding:5px">Back</a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+@*<h1>Details</h1>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="row" style="line-grid:create">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Productname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Productname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dd class="col-sm-10">
+            <img src=@Url.Content("~/Image/" + Model.Image) style="width:200px; height:250px; object-fit:contain" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proof)
+        </dt>
+        <dd class="col-sm-10">
+            <img src=@Url.Content("~/Image/" + Model.Proof) style="width:200px; height:250px; object-fit:contain" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Costtopost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Costtopost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Categoryid)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Fullname)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Productid" class="btn btn-warning" style="font-size:15px; padding:5px">Accept</a> |
+    <a asp-action="Index">Back to products</a>
+</div>*@

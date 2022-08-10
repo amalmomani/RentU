@@ -1,0 +1,64 @@
+﻿@model RentU.Models.Raboutu
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_DashboardLayout";
+
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Edit</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> About us</a></li>
+    </ul>
+</div>
+<hr />
+<div class="panel panel-default" style="padding:40px">
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Aboutid" />
+        <div class="form-group">
+            <label asp-for="Text1" class="control-label">First paragraph</label>
+            <input asp-for="Text1" class="form-control" />
+            <span asp-validation-for="Text1" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text2" class="control-label">Bold Text</label>
+            <input asp-for="Text2" class="form-control" />
+            <span asp-validation-for="Text2" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text3" class="control-label">Description1</label>
+            <input asp-for="Text3" class="form-control" />
+            <span asp-validation-for="Text3" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text4" class="control-label">Description2</label>
+            <input asp-for="Text4" class="form-control" />
+            <span asp-validation-for="Text4" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text4" class="control-label">Description3</label>
+            <input asp-for="Text4" class="form-control" />
+            <span asp-validation-for="Text4" class="text-danger"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="Image" class="control-label"></label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageFile" class="control-label">Image</label>
+            <input asp-for="ImageFile" class="form-control" accept="image/*" />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+        </div>
+    </form>
+
+</div>

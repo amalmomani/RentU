@@ -1,0 +1,90 @@
+﻿@model IEnumerable<RentU.Models.Rcategory>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_DashboardLayout";
+}
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> All Categories </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Category</a></li>
+    </ul>
+</div>
+<hr />
+<!-- Advanced Tables -->
+<div class="panel panel-default">
+    <div class="col-4" style="float:right">
+        @*<form asp-action="Index" method="post" style="display:flex;">
+                <div class="input-group no-border">
+                    <input type="text" name="product" class="form-control" placeholder="Search ..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>*@
+    </div>
+    <div class="row">
+        <p>
+            <a asp-action="Create" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px ">Create New</a>
+        </p>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover example">
+                <thead>
+                    <tr>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="odd gradeX">
+                            <td>
+                                <img src=@Url.Content("~/Image/" + item.Image) style="width:200px; height:250px; object-fit:contain" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categoryname)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Categoryid" class="btn btn-warning" style="font-size:15px; padding:5px"><i class="fa fa-edit "></i>Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Categoryid" class="btn btn-danger" style="font-size:15px; padding:5px"><i class="fa fa-pencil"></i>Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $('.example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+
+            ]
+        });
+    });
+</script>

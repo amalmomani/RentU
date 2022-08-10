@@ -1,0 +1,49 @@
+﻿@model RentU.Models.Rtestimonial
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Testimonial</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Testimage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Testimage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Userid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Testmoninalid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

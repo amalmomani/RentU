@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Home/img/favicons/favicon.ico">
+    <meta name="msapplication-TileImage" content="~/Home/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#000ff">
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="~/Home/css/theme.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Test/css/owl-carousel.min.css">
+</head>
+<body>
+
+
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+            <div class="container">
+                <a class="navbar-brand d-inline-flex" href="\Home\index">
+                    <img src="~/Home/img/gallery/logo.png" style="height:70px; width:200px ; object-fit:contain" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent" style="padding-left:80px">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="/Home/Index"style="color: #c25252 ">Home</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="/Home/Index"style="color: #c25252 ">Shops</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="/Home/Index"style="color: #c25252 ">Category</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="/Home/Index"style="color: #c25252 ">About us</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="/Home/Index"style="color: #c25252 ">Testemonial</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="/Home/Index"style="color: #c25252 ">Contact us</a></li>
+                        <li class="nav-item px-2"><span class="nav-link fw-medium">|</span></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="\LoginRegister\Register"style="color: #c25252 ">Register</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="\LoginRegister\Login"style="color: #c25252 ">Login</a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="col-lg-7 mx-auto text-center mb-6">
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Login now</h5>
+            </div>
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="card login-card" style="align-content:center">
+                        <div class="card-body">
+                            <form asp-action="Login" method="POST" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label for="Email"><i class="sr-only"></i>Email</label>
+                                    <input type="email" name="Email" id="Email" placeholder="Email address" class="form-control" />
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="Password"><i class="sr-only"></i>Password</label>
+                                    <input type="password" name="Password" id="Password" placeholder="Password" class="form-control" />
+                                </div>
+                                <div class="form-group mb-4">
+                                    <input type="submit" class="btn btn-block login-btn mb-4" value="Login" style="margin-left: 150px; background-color: #c25252; color: aliceblue" />
+
+                                </div>
+                                @if (ViewBag.flag == 0)
+                                {
+                                    <p style="color:red; text-align:center; background-color:#f9b1b1">
+                                        Wrong Credentials, Invalid Email or Password
+                                    </p>
+                                }
+
+                            </form>                           
+                                <p class="login-card-footer-text">Don't have an account? <a href="\LoginRegister\Register" class="text-reset">Register here</a></p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

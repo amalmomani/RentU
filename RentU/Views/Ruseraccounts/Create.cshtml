@@ -1,0 +1,57 @@
+﻿@model RentU.Models.Ruseraccount
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Add new user</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Users </a></li>
+    </ul>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fullname" class="control-label">Full name</label>
+                <input asp-for="Fullname" class="form-control" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phonenumber" class="control-label">Phone number</label>
+                <input asp-for="Phonenumber" class="form-control" />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Upload Image</label>
+                <input asp-for="ImageFile" class="form-control" accept="image/*"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Roleid" class="control-label"></label>
+                <select asp-for="Roleid" class ="form-control" asp-items="ViewBag.Roleid"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RentU</title>
+
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Home/img/favicons/favicon.ico">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar" style="background-color: #c56b6b; color: white">
+        <div class="navbar-wrapper"style="background-color: #c56b6b; color: white">
+            <div class="navbar-brand header-logo"style="background-color: #c56b6b; color: white">
+                <a href="/Dashboard/Dashboard" class="b-brand">
+                    <div class="b-bg">
+                        <i class="feather icon-shopping-cart"></i>
+                    </div>
+                    <span class="b-title">RentU</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Rcategory/Category" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">Discover</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Rproducts/JoinTable" class="nav-link "><span class="pcoded-micon"><i class="feather icon-bar-chart-2" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">Products</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/UserDashboard/JoinTable" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bookmark" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">My Bag</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Rproducts/Published" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bookmark" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">published products</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Rtestimonials/Create" class="nav-link "><span class="pcoded-micon"><i class="feather icon-navigation" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">Make a Review</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Rcontactus/ContactUs" class="nav-link "><span class="pcoded-micon"><i class="feather icon-mail" style="color: white"></i></span><span class="pcoded-mtext" style="color: white">Contact us via Email</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+            <a href="/Dashboard/Dashboard" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-shopping-cart"></i>
+                </div>
+                <span class="b-title">RentU</span>
+            </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="javascript:">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
+                @*<li class="nav-item">
+                        <div class="main-search">
+                            <div class="input-group">
+                                <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+                                <a href="javascript:" class="input-group-append search-close">
+                                    <i class="feather icon-x input-group-text"></i>
+                                </a>
+                                <span class="input-group-append search-btn btn btn-primary">
+                                    <i class="feather icon-search input-group-text"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>*@
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon feather icon-settings"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="~/assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                                <span>@ViewBag.Fullname</span>
+                                <a asp-controller="Dashboard" asp-action="Logout" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="/Ruseraccounts/UserEdit/@ViewBag.Userid" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+                                <li><a asp-controller="Dashboard" asp-action="Logout" class="dud-logout" title="Logout"><i class="feather icon-lock"></i> Logout </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    @RenderBody()
+                    <!-- /. PAGE WRAPPER  -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
+
+
+</body>
+</html>
+
+

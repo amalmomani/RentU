@@ -1,0 +1,55 @@
+﻿@model RentU.Models.Rproduct
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Products </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Delete</a></li>
+    </ul>
+</div>
+<hr />
+
+<!-- Modal HTML -->
+<div class="modal-dialog modal-confirm">
+    <div class="modal-content" style="text-align:center">
+        <!-- Modal HTML -->
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <h4 class="modal-title w-100">Are you sure?</h4>
+            </div>
+            <div style="place-content:center">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt> Product Name: </dt>
+                    <dd style="margin-top:20px">
+                        @Html.DisplayFor(model => model.Productname)
+                    </dd>
+
+                    <dt style="margin-top:20px"> Product Price: </dt>
+                    <dd style="margin-top:20px">
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+                   
+                </dl>
+                <div class="modal-body">
+                    <p>Do you really want to delete this product? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <form asp-action="UserDelete">
+                        <input type="hidden" asp-for="Productid" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        <a asp-action="Published" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

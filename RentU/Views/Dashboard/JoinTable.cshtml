@@ -1,0 +1,92 @@
+﻿@model IEnumerable<RentU.Models.JoinUserOrder>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Orders</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Information </a></li>
+    </ul>
+</div>
+<hr />
+<div class="panel panel-default">
+    <form asp-action="JoinTable" method="post">
+        <div class="row" style="Justify-content: space-between; display:flex">
+            <div class="form-group col-4">
+                <label class="form-label" for="startDate"> Start Date</label>
+                <input type="date" name="startDate" class="form-control search-box" placeholder="Search..." />
+            </div>
+            <div class="form-group col-4" style="">
+                <label class="form-label" for="endDate">End Date</label>
+                <input type="date" name="endDate" class="form-control search-box" placeholder="Search..." />
+            </div>
+            <div class="form-group col-4" style="margin-top:30px">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th> Full name</th>
+                        <th> Product Name</th>
+                        <th> Quantity </th>
+                        <th> Total Amount</th>
+                        <th> Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.orderproduct.Status == "0")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.useraccount.Fullname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.product.Productname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.orderproduct.Numberofpieces)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.orderproduct.Totalamount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order.Orderdate)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td> Total </td>
+                        <td>@ViewBag.total</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> total number of peices </td>
+                        <td>@ViewBag.amount</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

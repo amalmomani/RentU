@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RentU.Models.Rcategory>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_UserLayout";
+}
+
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Discover </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Category</a></li>
+    </ul>
+</div>
+<hr />
+
+<section class="ftco-section" id="blog-section">
+    <div class="row" style="margin-bottom:10px">
+        <div class="col-4">
+            <form asp-action="Category" method="post" style="display:flex;">
+                <div class="input-group no-border">
+                    <input type="text" name="category" class="form-control" placeholder="Search in categories..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-3">
+                <div class="card card-secondary mb-3" style="text-align:center; align-items:center">
+                    <img class="card-img-top" src=@Url.Content("~/Image/" + item.Image) style="object-fit:cover; width:250px ; height: 200px" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Categoryname)
+                        </h5>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a href="/Rproducts/JoinCategoryProduct/@item.Categoryid" class="btn btn-primary" style="font-size:15px; padding:5px"><i class="fa fa-inbox"></i>Show all products</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RentU.Models.Rcontactu>
+@{
+
+    Layout = "_UserLayout";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Messages </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Contact Us</a></li>
+    </ul>
+</div>
+<hr />
+<div class="panel panel-default">
+
+    <div class="container">
+        <div class="col-md-12" style="margin:0px">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading" style="text-align:center">We'd love to hear from you</h3>
+                    <form method="POST" enctype="multipart/form-data" asp-action="ContactUs" onsubmit="hideText()">
+                        <div>
+                            <div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group" style="width:700px" hidden>
+                                    <label class="form-label" for="Name">Name</label>
+                                    <input class="form-control" id="Name" name="Name" type="text" placeholder="Name" required value=@ViewBag.Fullname />
+                                </div>
+                                <div class="form-group" style="width:700px" hidden>
+                                    <label class="form-label" for="Email">Email Address</label>
+                                    <input class="form-control" id="Email" name="Email" type="email" placeholder="Email Address" required value=@ViewBag.Email />
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="form-label" for="Message">Message</label>
+                                    <textarea class="form-control" id="Message" name="Message" type="text" placeholder="Message" style="height: 10rem;" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" row" style="justify-content:center">
+                            <input type="submit" class="template-btn mt-3 btn btn-lg btn-dark" value="Send message" />
+                        </div>
+                    </form>
+                    <div class="info-hide" id="hide" style="display: none; padding:10px; font-size:20px; color:red">Your message was sent! we will reply to your message via your Email as soon as possible</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function hideText() {
+        $("#hide").fadeIn()
+        setTimeout(() => {
+            $("#hide").fadeOut()
+        }, 100000);
+    }</script>

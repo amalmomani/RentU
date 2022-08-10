@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RentU.Models.Raboutu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_DashboardLayout";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Manage</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> About us</a></li>
+    </ul>
+</div>  
+<hr />
+<section class="ftco-section" id="blog-section">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th>First paragraph</th>
+                        <th>Bold Text</th>
+                        <th> Description1 </th>
+                        <th> Image </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="overflow:scroll">
+                                @Html.DisplayFor(modelItem => item.Text1)
+                            </td>
+                            <td style="overflow:scroll">
+                                @Html.DisplayFor(modelItem => item.Text2)
+                            </td>
+                            <td style="overflow:scroll">
+                                @Html.DisplayFor(modelItem => item.Text3)
+                            </td>
+
+                            <td style="overflow:scroll">
+                                <img src=@Url.Content("~/Image/" + item.Image) style="width: 100px; height: 100px; object-fit: contain" />
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Aboutid" class="btn btn-primary"><i class="fa fa-edit "></i>"Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>

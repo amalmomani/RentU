@@ -1,0 +1,151 @@
+﻿@model IEnumerable<RentU.Models.JoinCategoryProduct>
+
+@{
+    ViewData["Title"] = "ProductView";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Discover All Products</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Products</a></li>
+    </ul>
+</div>
+<hr />
+@*<div class="row" style="margin-bottom:10px">
+        <div class="col-4">
+            <form asp-action="Products" method="post" style="display:flex;">
+                <div class="input-group no-border">
+                    <input type="text" name="productt" class="form-control" placeholder="Search ..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>*@
+<div class="row">
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px ">Create New</a>
+    </p>
+
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive table-bordered">
+            <table class="table example">
+                <thead>
+                    <tr>
+                        <th> Picture </th>
+                        <th> Product Name</th>
+                        <th> Price</th>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Phone number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <img src=@Url.Content("~/Image/" + item.product.Image) style="width:200px; height:250px; object-fit:contain" />
+                            </td>
+                            <td style="max-width:20px; overflow:scroll">
+                                @Html.DisplayFor(modelItem => item.product.Productname)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product.User.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product.User.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.product.User.Phonenumber)
+                            </td>
+
+                            <td>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <a href="/Rproducts/AddToCart/@item.product.Productid" type="submit" value="AddToCart" class="btn btn-primary">Add To Cart</a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $('.example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+
+            ]
+        });
+    });
+</script>
+
+
+
+@*<section class="ftco-section" id="blog-section">
+
+        @foreach (var item in Model)
+        {
+            <div class="card rounded-3 mb-4">
+                <div class="card-body p-4">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                            <img src=@Url.Content("~/Image/" + item.product.Image) style="width:200px; height:250px; object-fit:contain" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <p class="lead fw-normal mb-2">
+                                @Html.DisplayFor(modelItem => item.product.Productname)
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                            <h5 class="mb-0">
+                                @Html.DisplayFor(modelItem => item.product.Price)
+                            </h5>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                            <a href="/Rproducts/AddToCart/@item.product.Productid" type="submit" value="AddToCart" class="btn btn-primary">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </section>*@

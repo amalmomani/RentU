@@ -1,0 +1,69 @@
+﻿@model IEnumerable<RentU.Models.Rproduct>
+
+@{
+    ViewData["Title"] = "ProductView";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Discover All Products</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Products</a></li>
+    </ul>
+</div>
+<hr />
+<div class="row">
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px ">Create New</a>
+    </p>
+
+</div>
+<div class="row" style="margin-bottom:10px">
+    <div class="col-4">
+        <form asp-action="Products" method="post" style="display:flex;">
+            <div class="input-group no-border">
+                <input type="text" name="productt" class="form-control" placeholder="Search ..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<section class="ftco-section" id="blog-section">
+
+    @foreach (var item in Model)
+    {
+       
+            <div class="card rounded-3 mb-4">
+                <div class="card-body p-4">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                            <img src=@Url.Content("~/Image/" + item.Image) style="width:200px; height:250px; object-fit:contain" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <p class="lead fw-normal mb-2">
+                                @Html.DisplayFor(modelItem => item.Productname)
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                            <h5 class="mb-0">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </h5>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                            <a href="/Rproducts/AddToCart/@item.Productid" type="submit" value="AddToCart" class="btn btn-primary">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+</section>
+

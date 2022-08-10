@@ -1,0 +1,44 @@
+﻿@model RentU.Models.Rcategory
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_DashboardLayout";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Category </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Delete</a></li>
+    </ul>
+</div>
+<hr />
+
+<!-- Modal HTML -->
+<div class="modal-dialog modal-confirm">
+    <div class="modal-content" style="text-align:center">
+        <div class="modal-header flex-column">
+            <h4 class="modal-title w-100">Are you sure?</h4>
+        </div>
+        <div style="place-content:center">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt> Category Name: </dt>
+                <dd style="margin-top:20px">
+                    @Html.DisplayFor(model => model.Categoryname)
+                </dd>
+            </dl>
+            <div class="modal-body">
+                <p>Do you really want to delete this Category? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Categoryid" />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a asp-action="Index" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

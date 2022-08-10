@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RentU.Models.Rorderproduct>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Orders information</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Orders </a></li>
+    </ul>
+</div>
+<br />        <!-- Advanced Tables -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>Orders</h1>
+    </div>
+    <p>
+        <a asp-action="Create" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px ">Create New</a>
+    </p>
+
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th> Full name</th>
+                        <th> Product Name</th>
+
+                        <th> Quantity </th>
+                        <th> Total Amount</th>
+                        <th> Status</th>
+                        <th> Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Order.Userid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.Productname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numberofpieces)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Totalamount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Order.Orderdate)
+                        </td>
+
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model RentU.Models.Ruseraccount
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10"> Users </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Delete</a></li>
+    </ul>
+</div>
+<hr />
+<a asp-action="Index" asp-route-id="@Model.Userid" class="btn btn-primary" style="font-size:15px; padding:5px"><i class="fa fa-backward "></i>Back</a> |
+
+<!-- Modal HTML -->
+<div class="modal-content" style="text-align:center">
+    <!-- Modal HTML -->
+    <div class="modal-header flex-column">
+        <h4 class="modal-title w-100">User Details</h4>
+    </div>
+    <div style="place-content:center">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2"> Profile picture </dt>
+            <dd class="col-sm-10">
+                <img src=@Url.Content("~/Image/" + Model.Image) style="width:100px; height:100px; object-fit:contain" />
+            </dd>
+            <dt class="col-sm-2">Full name</dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Fullname)
+            </dd>
+            <dt class="col-sm-2">Phone number </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Phonenumber)
+            </dd>
+
+
+        </dl>
+    </div>
+    <div>
+        @*<a asp-action="Edit" asp-route-id="@Model.Userid" class="btn btn-warning" style="font-size:15px; padding:5px"><i class="fa fa-edit "></i>Edit</a>*@
+    </div>
+</div>

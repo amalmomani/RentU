@@ -1,0 +1,83 @@
+﻿@model RentU.Models.Ruseraccount
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Personal information</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:"> Edit Profile </a></li>
+    </ul>
+</div>
+<hr />
+<div class="col-md-9 personal-info">
+    <form asp-action="EditAdmin" enctype="multipart/form-data" class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Userid" />
+        <img src=@Url.Content("~/Image/" + Model.Image) class="rounded-circle" style="width:200px; height:200px; object-fit:contain" />
+        <div class="form-group">
+            <label asp-for="Fullname" class="col-lg-3">Full name</label>
+            <div class="col-lg-8">
+                <input asp-for="Fullname" class="form-control" readonly />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phonenumber" class="col-lg-3">Phone number</label>
+            <div class="col-lg-8">
+                <input asp-for="Phonenumber" class="form-control" readonly />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-lg-3">Email</label>
+            <div class="col-lg-8">
+                <input type="email" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="Password" class="col-lg-3">Password</label>
+            <div class="col-md-8">
+                <input type="text" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="col-lg-3">Password</label>
+            <div class="col-md-8">
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="Image" class="control-label"></label>
+            <input asp-for="Image" class="form-control" readonly />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="ImageFile" class="col-lg-3"></label>
+            <div class="col-md-8">
+                <input asp-for="ImageFile" class="form-control" readonly />
+                <h6>Upload a different photo...</h6>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="Roleid" class="control-label"></label>
+            <select asp-for="Roleid" class="form-control" asp-items="ViewBag.Roleid"></select>
+            <span asp-validation-for="Roleid" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input type="submit" value="Save" class="btn btn-primary " />
+                <a asp-action="Index" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

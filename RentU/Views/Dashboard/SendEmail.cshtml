@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "_DashboardLayout";
+}
+@ViewBag.Email;
+<form asp-controller="UserDashboard" asp-action="SendEmail">
+    <label for="to">Email:</label><br>
+    <label>Subject</label>
+    <input type="text" id="subject" name="subject">
+
+    <label>note</label>
+    <textarea id="body" name="body" style="width:100px;">
+</textarea>
+    <button type="submit">Submit</button>
+</form>

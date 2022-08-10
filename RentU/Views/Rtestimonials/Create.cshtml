@@ -1,0 +1,65 @@
+﻿@model RentU.Models.Rtestimonial
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Tell us your experiment</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Review</a></li>
+    </ul>
+</div>
+<hr />
+<div class="container">
+    <div class="col-md-12">
+        <div class="tab-content" id="myTabContent">
+            <h3 class="register-heading" style="text-align:center">Submit a Review</h3>
+
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="form-label" for="Message">Message</label>
+                    <textarea class="form-control" id="Message" name="Message" type="text" placeholder="Message" style="height: 10rem;" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label">Submit a photo</label>
+                    <input asp-for="ImageFile" class="form-control" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group" hidden>
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group" hidden>
+                    <label asp-for="Userid" class="control-label"></label>
+                    <input asp-for="Userid" class="form-control" value=@ViewBag.Userid />
+                </div>
+                <div class="form-group" hidden>
+                    <label asp-for="Name" class="control-label"></label>
+                    <input class="form-control" for="Name" id="Name" name="Name" type="text" placeholder="Name" value=@ViewBag.Fullname />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class=" row" style="justify-content:center">
+
+                    <div class="form-group">
+                        <input type="submit" class="template-btn mt-3 btn btn-lg btn-dark" value="Submit" />
+                    </div>
+                </div>
+            </form>
+            <div class="info-hide" id="hide" style="display: none; padding:10px; font-size:20px; color:red">Thank you! Your Review was sent. </div>
+        </div>
+    </div>
+</div>
+<script>
+    function hideText() {
+        $("#hide").fadeIn()
+        setTimeout(() => {
+            $("#hide").fadeOut()
+        }, 10000);
+    }</script>

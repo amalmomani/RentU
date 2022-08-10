@@ -1,0 +1,110 @@
+﻿@model IEnumerable<RentU.Models.Rproduct>
+
+@{
+    ViewData["Title"] = "ProductView";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Discover All Products</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Products</a></li>
+    </ul>
+</div>
+<hr />
+<div class="row">
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px ">Create New</a>
+    </p>
+
+</div>
+
+<div class="panel panel-default">
+    @*<div class="col-4" style="float:right">
+            <form asp-action="Index" method="post" style="display:flex;">
+                <div class="input-group no-border">
+                    <input type="text" name="product" class="form-control" placeholder="Search ..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>*@
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive table-bordered">
+            <table class="table example">
+                <thead>
+                    <tr>
+                        <th> Picture </th>
+                        <th> Name</th>
+                        <th> Price </th>
+                        <th> Status </th>
+                        <th> Cost to publish </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            <img src=@Url.Content("~/Image/" + item.Image) style="width:200px; height:250px; object-fit:contain" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Productname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Costtopost)
+                        </td>
+
+                        <td>
+                            <a asp-action="UserEdit" asp-route-id="@item.Productid" class="btn btn-warning" style="font-size:15px; padding:5px">Edit</a> |
+                            <a asp-action="UserDelete" asp-route-id="@item.Productid" class="btn btn-danger" style="font-size:15px; padding:5px">Delete</a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+    <a href="/UserDashboard/Payment" type="submit" value="AddToCart" class="btn btn-primary">Checkout</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $('.example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+
+            ]
+        });
+    });
+</script>

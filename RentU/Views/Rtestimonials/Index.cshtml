@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RentU.Models.Rtestimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_DashboardLayout";
+}
+
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Accept or Reject Reviews </h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Testimonials</a></li>
+    </ul>
+</div>
+<hr />
+<section class="ftco-section" id="blog-section">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th> Submitted Image </th>
+                        <th> Name </th>
+                        <th>Message </th>
+                        <th> Status </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src=@Url.Content("~/Image/" + item.Testimage) style="width: 100px; height: 100px; object-fit: contain" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td style="overflow:scroll">
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Testmoninalid" class="btn btn-primary">Accept</a>|
+                                <a asp-action="Delete" asp-route-id="@item.Testmoninalid" class="btn btn-danger">Reject</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </section>

@@ -1,0 +1,124 @@
+﻿@model RentU.Models.Rbank
+@{
+    Layout = "_UserLayout";
+}
+<style>
+
+
+    .card {
+        margin-bottom: 1.5rem;
+    }
+
+    .card {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #c8ced3;
+        border-radius: .25rem;
+    }
+
+    .card-header:first-child {
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    }
+
+    .card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #f0f3f5;
+        border-bottom: 1px solid #c8ced3;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .form-control:focus {
+        color: #5c6873;
+        background-color: #fff;
+        border-color: #c8ced3 !important;
+        outline: 0;
+        box-shadow: 0 0 0 #F44336;
+    }
+</style>
+
+<div class="col-md-12">
+    <div class="page-header-title">
+        <h5 class="m-b-10">Pay your Order</h5>
+    </div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Rcategory/Category"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="javascript:">Card information</a></li>
+    </ul>
+</div>
+<hr />
+<section class="ftco-section" id="blog-section">
+
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <form asp-action="Payment" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Payid" />
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Credit Card</strong>
+                        <small>enter your card details</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" hidden>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" id="name" type="text" placeholder="" value="@ViewBag.Fullname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="Cardnumber">Credit Card Number</label>
+                                    <input asp-for="Cardnumber" class="form-control" type="text" placeholder="0000 0000 0000 0000" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="Cvv">CVV/CVC</label>
+                                    <input asp-for="Cvv" class="form-control" id="cvv" type="text" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer" style="margin-left:140px">
+                        <button asp-action="Payment" class="btn btn-danger" data-dismiss="modal" type="submit">continue</button>
+                        <a asp-action="JoinTable" class="btn btn-success" data-dismiss="modal">Cancel</a>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</section>
+@if (ViewBag.flag == 0)
+{
+    <p style="color: red; text-align: center; background-color: #f8b0b0; padding: 10px">Wrong Cridit card or CVV number, Please try again! </p>
+}
+@if (ViewBag.emptyorder == 1)
+{
+    <p style="color: red; text-align: center; background-color: #f8b0b0; padding: 10px"> No items to purchase at your bag ! </p>
+}@if (ViewBag.amount == 0)
+{
+<p style="color: red; text-align: center; background-color: #f8b0b0; padding: 10px"> you don't have enough amount in this card , Try another one  </p>
+}

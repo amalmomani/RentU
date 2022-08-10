@@ -1,0 +1,450 @@
+﻿@model Tuple<IEnumerable<Raboutu>, IEnumerable<Rcategory>, IEnumerable<Rproduct>, IEnumerable<Rtestimonial>, IEnumerable<Rmainpage>>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RentU</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/Home/img/favicons/favicon.ico">
+    <meta name="msapplication-TileImage" content="~/Home/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#000ff">
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="~/Home/css/theme.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Test/css/owl-carousel.min.css">
+</head>
+
+
+<body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+            <div class="container">
+                <a class="navbar-brand d-inline-flex" href="\Home\index">
+                    @foreach (var item in Model.Item5)
+                    {
+                        <img src=@Url.Content("~/Image/" + item.Companylogo) alt="logo" style="height:70px; width:200px ; object-fit:contain" />
+                    }
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent" style="padding-left:80px">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="#top"style="color: #c25252 ">Home</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#shop"style="color: #c25252 ">Products</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#category"style="color: #c25252 ">Category</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#about"style="color: #c25252 ">About us</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#Test"style="color: #c25252 ">Testemonial</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact"style="color: #c25252 ">Contact us</a></li>
+                        <li class="nav-item px-2"><span class="nav-link fw-medium">|</span></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="\LoginRegister\Register"style="color: #c25252 ">Register</a></li>
+                        <li class="nav-item px-2"><a class="nav-link fw-medium" href="#Login"style="color: #c25252 ">Login</a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <section class="py-11 bg-light-gradient border-bottom border-white border-5">
+            <div class="bg-holder overlay overlay-light" style="background-image:url(../Home/img/gallery/header-bg.png);background-size:cover;">
+            </div>
+            <div class="container">
+                <div class="row flex-center">
+                    <div class="col-12 mb-10">
+                        <div class="d-flex align-items-center flex-column">
+                            @foreach (var item in Model.Item5)
+                            {
+                                <h1 class="fw-normal">
+                                    @Html.DisplayFor(modelItem => item.Text1)
+                                </h1>
+                                <h1 class="fs-4 fs-lg-8 fs-md-6 fw-bold" style="text-align:center">
+                                    @Html.DisplayFor(modelItem => item.Text2)
+                                </h1>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section> begin ============================-->
+        <section id="shop" style="padding:30px">
+            <div class="container">
+                <div class="row h-100">
+                    <div class="col-lg-7 mx-auto text-center mb-6">
+                        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Products</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="department-slider owl-carousel">
+                                @if (Model.Item3 != null)
+                                {
+                                    @foreach (var item in Model.Item3)
+                                    {
+
+                                        <div class="single-doctor mb-4 mb-lg-0" style="margin-right:50px">
+                                            <div class="single-slide">
+                                                <div class="slide-img">
+                                                    <img src=@Url.Content("~/Image/" + item.Image) style="width:300px; height:350px; object-fit:contain" />
+                                                </div>
+                                                <div class="content-area">
+                                                    <div class="doctor-name text-center">
+                                                        <div class="single-department item-padding text-center">
+                                                            <h3 style="color: #c25252 ">
+                                                                @item.Productname
+                                                            </h3>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section id="category" style="padding:30px">
+            <div class="container">
+                <div class="row h-100">
+                    <div class="col-lg-7 mx-auto text-center mb-6">
+                        <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3"> Categories</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="department-slider owl-carousel">
+                                @if (Model.Item2 != null)
+                                {
+                                    @foreach (var item in Model.Item2)
+                                    {
+                                        <div class="single-doctor mb-4 mb-lg-0" style="margin-right:50px">
+                                            <div class="single-slide">
+                                                <div class="slide-img">
+                                                    <img src=@Url.Content("~/Image/" + item.Image) style="width:300px; height:350px; object-fit:contain" />
+                                                </div>
+                                                <div class="content-area">
+                                                    <div class="doctor-name text-center">
+                                                        <div class="single-department item-padding text-center">
+                                                            <h3 style="color: #c25252">
+                                                                @item.Categoryname
+                                                            </h3>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section id="about" style="padding:30px">
+            <div class="container">
+                @if (Model.Item1 != null)
+                {
+                    @foreach (var item in Model.Item1)
+                    {
+                        <div class="row h-100 g-0">
+                            <div class="col-lg-7 mx-auto text-center mb-6">
+                                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">About us</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-300 p-4 h-100 d-flex flex-column justify-content-center">
+                                    <h4 class="text-800">
+                                        @Html.DisplayFor(modelItem => item.Text1)
+                                    </h4>
+                                    <h1 class="fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">
+                                        @Html.DisplayFor(modelItem => item.Text2)
+                                    </h1>
+                                    <p class="mb-5 fs-1">
+                                        @Html.DisplayFor(modelItem => item.Text3)
+                                    </p><p class="mb-5 fs-1">
+                                        @Html.DisplayFor(modelItem => item.Text4)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-span h-100 text-white">
+                                    <img src=@Url.Content("~/Image/" + item.Image) class="card-img h-100" style="object-fit: contain" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+        <section id="Test" style="padding:30px">
+            <div class="col-lg-7 mx-auto text-center mb-6">
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Testemonials</h5>
+            </div>
+            <div class="row" style="display:flex">
+
+                @if (Model.Item4 != null)
+                {
+                    @foreach (var item in Model.Item4)
+                    {
+                        <div class="col-6">
+                            <div class="card mb-3">
+                                <div class="bg-300 h-100 d-flex flex-column justify-content-center">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src=@Url.Content("~/Image/" + item.Testimage) style="width:100px; height:100px; object-fit: contain; border-radius:50%" class="card-img" alt="..." />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </h5>
+                                                <p class="card-text">
+                                                    @Html.DisplayFor(modelItem => item.Message)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+
+
+
+        <section id="Login">
+            <div class="col-lg-7 mx-auto text-center mb-6">
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Login now</h5>
+            </div>
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="card login-card" style="align-content:center">
+                        <div class="card-body">
+                            <form asp-action="Login" method="POST" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label for="Email"><i class="sr-only"></i>Email</label>
+                                    <input type="email" name="Email" id="Email" placeholder="Email address" class="form-control" />
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="Password"><i class="sr-only"></i>Password</label>
+                                    <input type="password" name="Password" id="Password" placeholder="Password" class="form-control" required />
+                                </div>
+                                <div class="form-group mb-4">
+                                    <input type="submit" class="btn btn-block login-btn mb-4" value="Login" style="background-color:#c25252 ;margin-left:150px;color:aliceblue"  />
+                                </div>
+                                @if (ViewBag.flag == 0)
+                                {
+                                    <p style="color:red; text-align:center">
+                                        Wrong Credentials, Invalid Email or Password
+                                    </p>
+                                }
+                            </form>
+                            <p class="login-card-footer-text">Don't have an account? <a href="\LoginRegister\Register" class="text-reset">Register here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Wrapper container -->
+        <section id="contact" style="padding:30px">
+            <div class="col-lg-7 mx-auto text-center mb-6">
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Contact us</h5>
+            </div>
+            <!-- Contact Form Starts -->
+            <div class="row" style="justify-content:center">
+                <div class="col-8">
+                    <div class="card login-card" style="align-content:center">
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data" asp-action="Contact" onsubmit="hideText()">
+                                <div>
+                                    <div style="margin:10px ">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group mb-4">
+                                            <label class="form-label" for="Name">Name</label>
+                                            <input class="form-control" id="Name" name="Name" type="text" placeholder="Name" required />
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label class="form-label" for="Email">Email Address</label>
+                                            <input class="form-control" id="Email" name="Email" type="email" placeholder="Email Address" required />
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label class="form-label" for="Message">Message</label>
+                                            <textarea class="form-control" id="Message" name="Message" type="text" placeholder="Message" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="justify-content:center">
+                                    <input type="submit" class="template-btn mt-3 btn btn-lg btn-primary"style="background-color: #c25252 " value="Send message" />
+                                </div>
+
+                            </form>
+                            <div class="info-hide" id="hide" style="display: none; padding:10px; font-size:20px; color:red">Your message was sent! we will reply to your message via your Email as soon as possible</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <!--<div class="modal-dialog modal-confirm">-->
+            @*<div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="d-flex">
+                        <div class="into-icon">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>
+                                Our Email
+                            </h3>
+                            <p>
+                                @foreach (var item in Model.Item5)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Companyemail)
+
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="into-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>
+                                Phone Number
+                            </h3>
+                            <p>
+                                @foreach (var item in Model.Item5)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Companyphone)
+
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>*@
+            <!--</div>-->
+        </section>
+        <!--Footer-->
+        <section class="py-0 pt-7">
+            <div class="container">
+                <div class="row" style="text-align:center; justify-content:center;">
+                    <div class="col-6 col-lg-2 mb-3" style="margin-right: 60px">
+                        <h5 class="lh-lg fw-bold text-1000">Company Info</h5>
+                        <ul class="list-unstyled mb-md-4 mb-lg-0">
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!" >About Us</a></li>
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!">Contact us</a></li>
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!">Category</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-lg-2 mb-3" style="margin-right: 60px">
+                        <h5 class="lh-lg fw-bold text-1000">Help &amp; Support</h5>
+                        <ul class="list-unstyled mb-md-4 mb-lg-0">
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!">How to Order</a></li>
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!">Size Guides</a></li>
+                            <li class="lh-lg"><a class="text-800 text-decoration-none" href="#!">Payment Methods</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-lg-2 mb-3" style="margin-right: 60px">
+                        <h5 class="lh-lg fw-bold text-1000">Our information</h5>
+                        <p class="text-800">
+                            <svg class="feather feather-phone me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg><span class="text-800">
+                                @foreach (var item in Model.Item5)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Companyphone)
+
+                                }
+                            </span>
+                        </p>
+                        <p class="text-800">
+                            <svg class="feather feather-mail me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span class="text-800">
+                                @foreach (var item in Model.Item5)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Companyemail)
+
+                                }
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="border-bottom border-3"></div>
+                <div class="row flex-center my-3">
+                    <div class="col-md-6 order-1 order-md-0">
+                        <p class="mb-md-0">&copy; <a href="\Home\Index">RentU</a>. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center text-md-end"><a href="#!"><span class="me-4" data-feather="facebook"></span></a><a href="#!"> <span class="me-4" data-feather="instagram"></span></a><a href="#!"> <span class="me-4" data-feather="youtube"></span></a><a href="#!"> <span class="me-4" data-feather="twitter"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .container-->
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="~/Home/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Home/vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="~/Home/vendors/feather-icons/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="~/Home/js/theme.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <script>
+function hideText() {
+        $("#hide").fadeIn()
+        setTimeout(() => {
+            $("#hide").fadeOut()
+        }, 5000);
+        }</script>
+    <script src="~/Test/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="~/Test/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="~/Test/js/vendor/wow.min.js"></script>
+    <script src="~/Test/js/vendor/owl-carousel.min.js"></script>
+    <script src="~/Test/js/vendor/jquery.datetimepicker.full.min.js"></script>
+    <script src="~/Test/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="~/Test/js/vendor/superfish.min.js"></script>
+    <script src="~/Test/js/main.js"></script>
+</body>
+
+</html>
